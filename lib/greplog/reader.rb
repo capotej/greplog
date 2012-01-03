@@ -3,6 +3,7 @@ module Greplog
     attr_accessor :proxy 
     
     def initialize
+      p "iniinininasd"
       logclass = Greplog::Config.config[:logclass]
       obj = Greplog::Util.constantize(logclass)
       @proxy = obj.new
@@ -10,7 +11,6 @@ module Greplog
   
     private
     def method_missing(method_sym, *arguments, &block)
-      # the first argument is a Symbol, so you need to_s it if you want to pattern match
       puts "[reader] sending #{method_sym}" 
       @proxy.send(method_sym, *arguments, &block) 
     end

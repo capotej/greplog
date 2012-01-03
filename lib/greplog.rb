@@ -32,6 +32,3 @@ end
 
 Greplog::Config.load_config
 Greplog::Util.load_external_loggers
-
-reader = Greplog::Reader.new
-p reader.alasdl
