@@ -3,7 +3,6 @@ module Greplog
     attr_accessor :proxy 
     
     def initialize
-      p "iniinininasd"
       logclass = Greplog::Config.config[:logclass]
       obj = Greplog::Util.constantize(logclass)
       @proxy = obj.new

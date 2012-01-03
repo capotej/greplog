@@ -18,6 +18,9 @@ module Greplog
         `ls -1 #{@basedir}/#{name}/`.split("\n")
       end
 
+      def filename_for(name)
+        "#{@basedir}/#{name}/#{name}_current"
+      end
     end
   end
 end

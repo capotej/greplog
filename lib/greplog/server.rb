@@ -31,6 +31,8 @@ module Greplog
       when "/" 
         index_page
       #subdir view
+      when /\/log\/([^\/]+)\/current\/stream/
+        stream_file($1) 
       when /\/log\/([^\/]+)\/current\/find\/([^\/]+)/
         find_view($1, $2)
       when /\/log\/([^\/]+)\/current/
@@ -56,6 +58,11 @@ module Greplog
     
     def index_page
       html_response @@reader.all.map { |x| "<a href=\"/log/#{x}\">#{x}</a><br/>" }.join('')
+    end
+
+    def stream_file(name)
+      stream_file_data @@reader.filename_for(name), :http_chunks => true
+      close_connection_after_writing
     end
 
     def html_response(content)
