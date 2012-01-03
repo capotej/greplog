@@ -3,7 +3,10 @@
 module Greplog
   module Logreader
     class Base
-      def all_logs
+      def initialize
+        @basedir = Greplog::Config.config[:logdir]
+      end
+      def all
       end
     end
   end
