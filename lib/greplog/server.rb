@@ -8,9 +8,11 @@ module Greplog
     end
     
     def self.start
-      puts "starting server"
+      Greplog::Config.load_config
+      Greplog::Util.load_modules
+      puts "starting server on " << Greplog::Config.config[:ip] << ":" << Greplog::Config.config[:port]
       EM.run{
-        EM.start_server '0.0.0.0', 8080, self
+        EM.start_server Greplog::Config.config[:ip], Greplog::Config.config[:port], self
       }
     end
    
