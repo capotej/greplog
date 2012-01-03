@@ -8,6 +8,7 @@ module Greplog
     end
     
     def self.start
+      puts "starting server"
       EM.run{
         EM.start_server '0.0.0.0', 8080, self
       }
